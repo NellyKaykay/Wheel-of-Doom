@@ -1,0 +1,92 @@
+<body>
+	<h1>Lista de Coders</h1>
+	<ul id="coders-list">
+		<li>Nelly</li>
+		<li>Manuel</li>
+		<li>Nadia</li>
+		<li>Halima</li>
+	</ul>
+	<button id="start-btn">Start</button>
+	<script src="script.js"></script>
+</body>
+</html>
+CSS:
+
+css
+Copy code
+h1 {
+	text-align: center;
+}
+
+ul {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+}
+
+li {
+	font-size: 1.2em;
+	margin: 10px;
+}
+
+button {
+	display: block;
+	margin: 20px auto;
+	font-size: 1.5em;
+	padding: 10px 20px;
+	border-radius: 5px;
+	background-color: #008CBA;
+	color: #FFFFFF;
+	border: none;
+	cursor: pointer;
+}
+
+button:hover {
+	background-color: #005F6B;
+}
+JavaScript:
+
+javascript
+Copy code
+// Get the list of coders and the start button
+const codersList = document.getElementById("coders-list");
+const startBtn = document.getElementById("start-btn");
+
+// Store the chosen coder to prevent them from being chosen again
+let chosenCoder = null;
+
+// Add an event listener to the start button
+startBtn.addEventListener("click", chooseCoder);
+
+// Function to choose a random coder from the list
+function chooseCoder() {
+	// If all coders have been chosen, reset the chosenCoder variable
+	if (codersList.children.length === 0) {
+		chosenCoder = null;
+	}
+
+	// Choose a random coder from the list
+	let coderIndex = Math.floor(Math.random() * codersList.children.length);
+	let coder = codersList.children[coderIndex];
+
+	// If the chosen coder is the same as the previous one, choose again
+	while (coder === chosenCoder) {
+		coderIndex = Math.floor(Math.random() * codersList.children.length);
+		coder = codersList.children[coderIndex];
+	}
+
+	// Remove the chosen coder from the list and add it to the chosenCoder variable
+	codersList.removeChild(coder);
+	chosenCoder = coder;
+
+	// Show an alert with the chosen coder's name
+	alert("The chosen coder is: " + chosenCoder.textContent);
+}
+Este código crea una página web con una lista de coders y un botón para elegir un coder al azar. Al hacer clic en el botón, se elige un coder al azar de la lista y se muestra su nombre en una alerta. Si se hace clic en el botón de nuevo, se elige otro coder al azar de la lista que no sea el mismo que el anteriormente elegido. Si se ha elegido a todos los coders, el botón no hará nada hasta que la página se reinicie.
+
+
+
+
+
+
+
